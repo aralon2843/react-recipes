@@ -8,7 +8,15 @@ const API = {
   getRecipesByCategory(category) {
     return axiosInstance
       .get(
-        `complexSearch?tags=${category}&instructionsRequired=true&addRecipeInformation=true&apiKey=4fdcbfb4481d4b23a16a4534d9c3fb28`
+        `complexSearch?type=${category}&instructionsRequired=true&addRecipeInformation=true&number=11&apiKey=29e5c566447f436c937a52fcca993afc`
+      )
+      .then((response) => response.data.results)
+  },
+  getNextRecipesByCategory(category, offset) {
+    console.log(category, offset)
+    return axiosInstance
+      .get(
+        `complexSearch?type=${category}&instructionsRequired=true&addRecipeInformation=true&number=11&offset=${offset}&apiKey=29e5c566447f436c937a52fcca993afc`
       )
       .then((response) => response.data.results)
   },

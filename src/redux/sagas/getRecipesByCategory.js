@@ -1,4 +1,4 @@
-import { takeLatest, put, call, takeEvery } from 'redux-saga/effects'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import API from '../../service/api'
 import { getRecipesByCategoryError, getRecipesByCategorySuccess } from '../actionCreators/mainPage'
 import actions from '../actions/mainPage'

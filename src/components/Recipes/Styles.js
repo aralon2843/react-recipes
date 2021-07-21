@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledRecipes = styled.div`
   display: grid;
@@ -51,15 +51,22 @@ export const StyledDescription = styled.div`
   margin: 0px;
 `
 
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 export const StyledButton = styled.button`
   display: block;
-  width: 150px;
-  height: 35px;
+  width: ${props => props.width ? props.width + 'px': '150px'};
+  height: ${props => props.height ? props.height + 'px' : '35px'};
   outline: none;
   border: none;
   background-color: #a2e3c4;
-  color: #3c493f;
+  color: ${props => props.color? props.color : '#3c493f'};
   border-radius: 15px;
+  cursor: pointer;
 `
 
 export const StyledTime = styled.p`

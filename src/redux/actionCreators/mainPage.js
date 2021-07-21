@@ -18,3 +18,17 @@ export const getRecipesByCategorySuccess = (payload) => ({
 export const getRecipesByCategoryError = () => ({
   type: actions.GET_RECIPES_BY_CATEGORY_ERROR,
 })
+ 
+export const getNextRecipesByCategoryRequest = (payload) => ({
+  type: actions.GET_NEXT_RECIPES_BY_CATEGORY,
+  payload,
+})
+
+export const getNextRecipesByCategorySuccess = (payload) => ({
+  type: actions.GET_NEXT_RECIPES_BY_CATEGORY_SUCCESS,
+  payload,
+})
+
+export const getNextRecipesByCategoryError = () => ({
+  type: actions.GET_NEXT_RECIPES_BY_CATEGORY_ERROR,
+})

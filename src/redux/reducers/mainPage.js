@@ -2,7 +2,7 @@ import actions from '../actions/mainPage'
 
 const initialState = {
   recipes: [],
-  activeCategory: 'main courses',
+  activeCategory: 'main course',
   isLoaded: false,
 }
 
@@ -24,10 +24,32 @@ const mainPage = (state = initialState, { type, payload }) => {
         ...state,
         isLoaded: false,
         error: false,
+        recipes: [],
         recipes: payload,
       }
 
     case actions.GET_RECIPES_BY_CATEGORY_ERROR:
+      return {
+        ...state,
+        isLoaded: false,
+        error: true,
+      }
+
+    case actions.GET_NEXT_RECIPES_BY_CATEGORY:
+      return {
+        ...state,
+        isLoaded: false,
+      }
+
+    case actions.GET_NEXT_RECIPES_BY_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        isLoaded: false,
+        error: false,
+        recipes: [...state.recipes, ...payload],
+      }
+
+    case actions.GET_NEXT_RECIPES_BY_CATEGORY_ERROR:
       return {
         ...state,
         isLoaded: false,
