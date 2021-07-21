@@ -6,15 +6,16 @@ import {
   getRecipesByCategoryRequest,
 } from '../../redux/actionCreators/mainPage'
 import {
-  ButtonWrapper,
+  MoreButtonWrapper,
   StyledButton,
-  StyledCalories,
-  StyledDescription,
+  StyledTag,
+  StyledTags,
   StyledImage,
   StyledRecipe,
   StyledRecipes,
   StyledTime,
   StyledTitle,
+  MoreButton,
 } from './Styles'
 
 const Recipes = memo(() => {
@@ -40,18 +41,20 @@ const Recipes = memo(() => {
         <StyledRecipe id={recipe.id} key={recipe.id}>
           <StyledImage src={recipe.image}></StyledImage>
           <StyledTitle>{recipe.title}</StyledTitle>
-          <StyledDescription>
-            <StyledCalories>NaN</StyledCalories>
-          </StyledDescription>
+          <StyledTags>
+            {recipe.diets.map((diet) => (
+              <StyledTag>{diet}</StyledTag>
+            ))}
+          </StyledTags>
           <StyledTime>{recipe.readyInMinutes} min</StyledTime>
           <StyledButton>Read recipe</StyledButton>
         </StyledRecipe>
       ))}
-      <ButtonWrapper>
-        <StyledButton onClick={() => onClickHandler(activeCategory, offset)} height={50} width={200} color={'#fff'}>
-          next recipes
-        </StyledButton>
-      </ButtonWrapper>
+      <MoreButtonWrapper>
+        <MoreButton onClick={() => onClickHandler(activeCategory, offset)}>
+          +
+        </MoreButton>
+      </MoreButtonWrapper>
     </StyledRecipes>
   )
 })

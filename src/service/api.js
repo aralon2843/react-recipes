@@ -8,7 +8,7 @@ const API = {
   getRecipesByCategory(category) {
     return axiosInstance
       .get(
-        `complexSearch?type=${category}&instructionsRequired=true&addRecipeInformation=true&number=11&apiKey=29e5c566447f436c937a52fcca993afc`
+        `complexSearch?type=${category}&instructionsRequired=true&addRecipeInformation=true&number=11&apiKey=25e990ca867d460fb39b86a74eeaa699`
       )
       .then((response) => response.data.results)
   },
@@ -16,7 +16,7 @@ const API = {
     console.log(category, offset)
     return axiosInstance
       .get(
-        `complexSearch?type=${category}&instructionsRequired=true&addRecipeInformation=true&number=11&offset=${offset}&apiKey=29e5c566447f436c937a52fcca993afc`
+        `complexSearch?type=${category}&instructionsRequired=true&addRecipeInformation=true&number=11&offset=${offset}&apiKey=25e990ca867d460fb39b86a74eeaa699`
       )
       .then((response) => response.data.results)
   },

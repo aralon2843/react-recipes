@@ -37,21 +37,26 @@ export const StyledTitle = styled.h2`
   font-weight: 400;
   text-align: center;
   flex: 1 1 auto;
+  
 `
 
-export const StyledCalories = styled.div`
+export const StyledTag = styled.div`
   display: inline-block;
   color: #3c493f;
-  background-color: #f0f7f4;
+  background-color: #fecda5;
   border-radius: 15px;
   padding: 5px;
   font-size: 12px;
+  margin: 2px;
 `
-export const StyledDescription = styled.div`
+export const StyledTags = styled.div`
   margin: 0px;
+  margin: 10px 0px;
+  text-align: center;
+  flex: 1 1 auto;
 `
 
-export const ButtonWrapper = styled.div`
+export const MoreButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,12 +64,12 @@ export const ButtonWrapper = styled.div`
 
 export const StyledButton = styled.button`
   display: block;
-  width: ${props => props.width ? props.width + 'px': '150px'};
-  height: ${props => props.height ? props.height + 'px' : '35px'};
+  width: 150px;
+  height: 35px;
   outline: none;
   border: none;
   background-color: #a2e3c4;
-  color: ${props => props.color? props.color : '#3c493f'};
+  color: #3c493f;
   border-radius: 15px;
   cursor: pointer;
 `
@@ -84,4 +89,13 @@ export const StyledTime = styled.p`
   position: absolute;
   top: -5px;
   right: 5px;
+`
+export const MoreButton = styled.div`
+  padding: 5px;
+  padding: 10px 20px;
+  border-radius: 50%;
+  background-color: #a2e3c4;
+  color: #f0f7f4;
+  font-size: 32px;
+  cursor: pointer;
 `
