@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {
   getNextRecipesByCategoryRequest,
   getRecipesByCategoryRequest,
@@ -47,7 +48,10 @@ const Recipes = memo(() => {
             ))}
           </StyledTags>
           <StyledTime>{recipe.readyInMinutes} min</StyledTime>
-          <StyledButton>Read recipe</StyledButton>
+
+          <StyledButton>
+            <Link to={`/recipe${recipe.id}`}>Read recipe</Link>
+          </StyledButton>
         </StyledRecipe>
       ))}
       <MoreButtonWrapper>

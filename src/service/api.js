@@ -20,6 +20,13 @@ const API = {
       )
       .then((response) => response.data.results)
   },
+  getRecipeInformationById(id) {
+    return axiosInstance
+      .get(
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=25e990ca867d460fb39b86a74eeaa699`
+      )
+      .then((response) => response.data)
+  },
 }
 
 export default API

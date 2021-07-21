@@ -7,7 +7,10 @@ const globalStyles = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     background-color: #A2E3C4;
     font-size: 14px;
-
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 `
 export default globalStyles

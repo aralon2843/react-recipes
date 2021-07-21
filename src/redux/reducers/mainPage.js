@@ -4,6 +4,7 @@ const initialState = {
   recipes: [],
   activeCategory: 'main course',
   isLoaded: false,
+  error: false,
 }
 
 const mainPage = (state = initialState, { type, payload }) => {

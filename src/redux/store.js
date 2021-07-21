@@ -1,10 +1,12 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import mainPage from './reducers/mainPage'
+import recipePage from './reducers/recipePage'
 import rootSaga from './sagas'
 
 const reducers = combineReducers({
-  mainPage: mainPage,
+  mainPage,
+  recipePage,
 })
 
 const sagaMiddleware = createSagaMiddleware()

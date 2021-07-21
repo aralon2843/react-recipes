@@ -7,6 +7,7 @@ import drinkIcon from '../../assets/logo/drink.png'
 import favoritesIcon from '../../assets/logo/star.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActiveCategory } from '../../redux/actionCreators/mainPage'
+import { Link } from 'react-router-dom'
 
 const SideBar = () => {
   const categories = ['Main course', 'Soup', 'Salad', 'Dessert', 'Drink']
@@ -24,7 +25,7 @@ const SideBar = () => {
     <StyledSideBar>
       <StyledLogo>
         <span>react</span>
-        {'recipes>_'}
+        <Link to='/'>{'recipes>_'}</Link>
       </StyledLogo>
       <StyledList>
         {categories.map((category, i) => (
@@ -33,7 +34,7 @@ const SideBar = () => {
             icon={icons[i]}
             onClick={() => onCategoryClick(category.toLowerCase())}
             key={category}>
-            {category + 's'}
+            <Link to='/'>{category + 's'}</Link>
           </StyledItem>
         ))}
         <StyledItem icon={favoritesIcon}>Favorites</StyledItem>
