@@ -37,7 +37,6 @@ export const StyledTitle = styled.h2`
   font-weight: 400;
   text-align: center;
   flex: 1 1 auto;
-  
 `
 
 export const StyledTag = styled.div`

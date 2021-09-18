@@ -7,6 +7,7 @@ const globalStyles = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     background-color: #A2E3C4;
     font-size: 14px;
+    margin: 0;  
     a {
       color: inherit;
       text-decoration: none;

@@ -29,7 +29,6 @@ const Recipes = memo(() => {
   let offset = recipes.length
 
   useEffect(() => {
-    // console.log(activeCategory)
     dispatch(getRecipesByCategoryRequest(activeCategory))
   }, [activeCategory, dispatch])
 

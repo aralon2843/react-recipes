@@ -25,7 +25,6 @@ const mainPage = (state = initialState, { type, payload }) => {
         ...state,
         isLoaded: false,
         error: false,
-        recipes: [],
         recipes: payload,
       }
 

@@ -8,9 +8,16 @@ import favoritesIcon from '../../assets/logo/star.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActiveCategory } from '../../redux/actionCreators/mainPage'
 import { Link } from 'react-router-dom'
+import { useMemo } from 'react'
 
 const SideBar = () => {
-  const categories = ['Main course', 'Soup', 'Salad', 'Dessert', 'Drink']
+  const categories = useMemo(() => [
+    'Main course',
+    'Soup',
+    'Salad',
+    'Dessert',
+    'Drink',
+  ])
   const icons = [mainCourseIcon, soupIcon, saladIcon, dessertIcon, drinkIcon]
 
   const dispatch = useDispatch()
@@ -24,8 +31,10 @@ const SideBar = () => {
   return (
     <StyledSideBar>
       <StyledLogo>
-        <span>react</span>
-        <Link to='/'>{'recipes>_'}</Link>
+        <Link to='/'>
+          <span>react</span>
+          {'recipes>_'}
+        </Link>
       </StyledLogo>
       <StyledList>
         {categories.map((category, i) => (
