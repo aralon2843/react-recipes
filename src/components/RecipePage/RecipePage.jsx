@@ -38,18 +38,22 @@ const RecipePage = memo(() => {
         <Flex>
           <StyledImage src={recipe.image} />
           <StyledTags>
-            <div>
-              Diets:
-              {recipe?.diets?.map((diet) => (
-                <StyledTag>{diet}</StyledTag>
-              ))}
-            </div>
-            <div>
-              Dish types:
-              {recipe?.dishTypes?.map((type) => (
-                <StyledTag>{type}</StyledTag>
-              ))}
-            </div>
+            {recipe?.diets?.length > 0 && (
+              <div>
+                Diets:
+                {recipe.diets.map((diet) => (
+                  <StyledTag>{diet}</StyledTag>
+                ))}
+              </div>
+            )}
+            {recipe?.dishTypes?.length > 0 && (
+              <div>
+                Dish types:
+                {recipe.dishTypes.map((type) => (
+                  <StyledTag>{type}</StyledTag>
+                ))}
+              </div>
+            )}
           </StyledTags>
         </Flex>
         <Flex>

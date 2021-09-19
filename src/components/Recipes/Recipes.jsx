@@ -29,7 +29,7 @@ const Recipes = memo(() => {
   let offset = recipes.length
 
   useEffect(() => {
-    dispatch(getRecipesByCategoryRequest(activeCategory))
+    activeCategory && dispatch(getRecipesByCategoryRequest(activeCategory))
   }, [activeCategory, dispatch])
 
   const onClickHandler = (category, offset) => {
