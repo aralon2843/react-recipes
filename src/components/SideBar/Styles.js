@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const StyledSideBar = styled.div`
   flex: 1 1 20%;
@@ -13,31 +13,26 @@ export const StyledSideBar = styled.div`
   @media (max-width: 1024px) {
     width: 100px;
   }
-`
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+`;
 
-export const StyledLogo = styled.h2`
-  color: #a2e3c4;
-  letter-spacing: 2.5px;
-  font-weight: 600;
-  span {
-    color: #7e8d85;
-  }
-  margin-bottom: 35px;
-`
+export const StyledLogo = styled.img`
+  width: 70px;
+  height: 70px;
+  margin-bottom: 25px;
+`;
 
 export const StyledList = styled.ul`
   list-style: none;
   font-size: 18px;
-  margin: 0;
-  padding: 0;
-`
+`;
 
 export const StyledItem = styled.li`
-  color: ${(props) => (props.active ? '#A2E3C4' : '#7E8D85')};
+  color: ${(props) => (props.active ? '#1FA2F2' : '#13171A')};
   background: url(${(props) => props.icon}) left 5px / cover no-repeat;
   background-size: 25px;
   margin-bottom: 30px;
   padding: 10px 45px 0px;
   transition: 0.1s ease all;
   cursor: pointer;
-`
+`;

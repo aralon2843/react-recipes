@@ -2,7 +2,7 @@ import actions from '../actions/recipePage'
 
 const initialState = {
   recipeInformation: {},
-  isLoad: false,
+  isLoaded: false,
   error: false,
 }
 

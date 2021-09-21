@@ -46,3 +46,17 @@ export const getRecipesBySearchSuccess = (payload) => ({
 export const getRecipesBySearchError = () => ({
   type: actions.GET_RECIPES_BY_SEARCH_ERROR,
 });
+
+export const getNextRecipesBySearchRequest = (payload) => ({
+  type: actions.GET_NEXT_RECIPES_BY_SEARCH,
+  payload,
+});
+
+export const getNextRecipesBySearchSuccess = (payload) => ({
+  type: actions.GET_NEXT_RECIPES_BY_SEARCH_SUCCESS,
+  payload,
+});
+
+export const getNextRecipesBySearchError = () => ({
+  type: actions.GET_NEXT_RECIPES_BY_SEARCH_ERROR,
+});

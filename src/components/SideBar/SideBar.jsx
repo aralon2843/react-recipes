@@ -5,6 +5,7 @@ import saladIcon from '../../assets/logo/broccoli.png';
 import dessertIcon from '../../assets/logo/dessert.png';
 import drinkIcon from '../../assets/logo/drink.png';
 import favoritesIcon from '../../assets/logo/star.svg';
+import logo from '../../assets/logo/logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveCategory } from '../../redux/actionCreators/mainPage';
 import { Link } from 'react-router-dom';
@@ -23,12 +24,9 @@ const SideBar = () => {
 
   return (
     <StyledSideBar>
-      <StyledLogo>
-        <Link to='/'>
-          <span>react</span>
-          {'recipes>_'}
-        </Link>
-      </StyledLogo>
+      <Link to='/'>
+        <StyledLogo src={logo} />
+      </Link>
       <StyledList>
         {categories.map((category, i) => (
           <StyledItem

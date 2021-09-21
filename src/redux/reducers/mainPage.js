@@ -77,6 +77,27 @@ const mainPage = (state = initialState, { type, payload }) => {
         isLoaded: false,
         error: true,
       };
+
+    case actions.GET_NEXT_RECIPES_BY_SEARCH:
+      return {
+        ...state,
+        isLoaded: false,
+      };
+
+    case actions.GET_NEXT_RECIPES_BY_SEARCH_SUCCESS:
+      return {
+        ...state,
+        isLoaded: false,
+        error: false,
+        recipes: [...state.recipes, ...payload],
+      };
+
+    case actions.GET_NEXT_RECIPES_BY_SEARCH_ERROR:
+      return {
+        ...state,
+        isLoaded: false,
+        error: true,
+      };
     default:
       return state;
   }

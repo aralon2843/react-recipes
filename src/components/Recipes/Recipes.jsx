@@ -1,11 +1,12 @@
-import { memo } from 'react'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { memo } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   getNextRecipesByCategoryRequest,
+  getNextRecipesBySearchRequest,
   getRecipesByCategoryRequest,
-} from '../../redux/actionCreators/mainPage'
+} from '../../redux/actionCreators/mainPage';
 import {
   MoreButtonWrapper,
   StyledButton,
@@ -17,25 +18,33 @@ import {
   StyledTime,
   StyledTitle,
   MoreButton,
-} from './Styles'
+} from './Styles';
 
 const Recipes = memo(() => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const activeCategory = useSelector((state) => state.mainPage.activeCategory)
+  const activeCategory = useSelector((state) => state.mainPage.activeCategory);
 
-  const recipes = useSelector((state) => state.mainPage.recipes)
+  const recipes = useSelector((state) => state.mainPage.recipes);
 
-  let offset = recipes.length
+  const searchValue = useSelector((state) => state.search.searchValue);
+
+  let offset = recipes.length;
+  // сделать пагинацию для рецептов с поиска, useSelector(state => state.search.searchValue)
+  // searchValue прокинуть в getNextRecipesBySearchRequest({searchValue, offset})
 
   useEffect(() => {
-    activeCategory && dispatch(getRecipesByCategoryRequest(activeCategory))
-  }, [activeCategory, dispatch])
+    activeCategory && dispatch(getRecipesByCategoryRequest(activeCategory));
+  }, [activeCategory, dispatch]);
 
   const onClickHandler = (category, offset) => {
-    dispatch(getNextRecipesByCategoryRequest({ category, offset }))
-  }
-  return (
+    if (activeCategory) {
+      dispatch(getNextRecipesByCategoryRequest({ category, offset }));
+    } else if (searchValue) {
+      dispatch(getNextRecipesBySearchRequest({ searchValue, offset }));
+    }
+  };
+  return recipes.length > 0 ? (
     <StyledRecipes>
       {recipes.map((recipe) => (
         <StyledRecipe id={recipe.id} key={recipe.id}>
@@ -59,7 +68,9 @@ const Recipes = memo(() => {
         </MoreButton>
       </MoreButtonWrapper>
     </StyledRecipes>
-  )
-})
+  ) : (
+    <StyledTitle>Sorry, no results</StyledTitle>
+  );
+});
 
-export default Recipes
+export default Recipes;

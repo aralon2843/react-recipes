@@ -1,10 +1,12 @@
 import { memo } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import Flex from '../../common/Flex';
 import { getRecipeInformationByIdRequest } from '../../redux/actionCreators/recipePage';
-import { StyledTag, StyledTags } from '../Recipes/Styles';
+import { StyledButton, StyledTag, StyledTags } from '../Recipes/Styles';
+import Search from '../Search/Search';
 import {
   StyledImage,
   StyledIngredientsItem,
@@ -12,10 +14,9 @@ import {
   StyledRecipeInformation,
   StyledRecipePage,
   StyledTitle,
-  StyledIngredientsTitle,
   StyledInstructionsList,
   StyledInstructionsItem,
-  StyledInstructionsTitle,
+  StyledDescription,
 } from './Styles';
 
 const RecipePage = memo(() => {
@@ -25,18 +26,25 @@ const RecipePage = memo(() => {
 
   const recipe = useSelector((state) => state.recipePage.recipeInformation);
 
+  const tabs = ['Ingredients', 'Instructions'];
+
+  const [activeTab, setActiveTab] = useState(tabs[0]);
+
   useEffect(() => {
-    console.log(match.params);
     dispatch(getRecipeInformationByIdRequest(match.params.id));
-    console.log(recipe);
   }, [match]);
 
   return (
     <StyledRecipePage>
+      <Search />
       <StyledRecipeInformation>
-        <StyledTitle>{recipe.title}</StyledTitle>
-        <Flex>
-          <StyledImage src={recipe.image} />
+        <StyledImage
+          src={`https://spoonacular.com/recipeImages/${recipe.id}-636x393.jpg`}
+        />
+        <StyledDescription>
+          <StyledTitle fontSize={28} fontWeight={500}>
+            {recipe.title}
+          </StyledTitle>
           <StyledTags>
             {recipe?.diets?.length > 0 && (
               <div>
@@ -55,10 +63,22 @@ const RecipePage = memo(() => {
               </div>
             )}
           </StyledTags>
+        </StyledDescription>
+        <Flex justify='flex-end'>
+          {tabs.map((tab) => (
+            <StyledButton
+              onClick={() => setActiveTab(tab)}
+              active={activeTab === tab}
+              marginRight={15}>
+              {tab}
+            </StyledButton>
+          ))}
         </Flex>
-        <Flex>
+        {activeTab === tabs[0] ? (
           <StyledIngredientsList>
-            <StyledIngredientsTitle>Ingredients</StyledIngredientsTitle>
+            <StyledTitle fontSize={18} fontWeight={500}>
+              Ingredients
+            </StyledTitle>
             {recipe?.extendedIngredients?.map((ingredient) => (
               <StyledIngredientsItem
                 icon={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}>
@@ -66,16 +86,18 @@ const RecipePage = memo(() => {
               </StyledIngredientsItem>
             ))}
           </StyledIngredientsList>
-
+        ) : (
           <StyledInstructionsList>
-            <StyledInstructionsTitle>Instructions</StyledInstructionsTitle>
+            <StyledTitle fontSize={18} fontWeight={500}>
+              Instructions
+            </StyledTitle>
             {recipe?.analyzedInstructions
               ? recipe?.analyzedInstructions[0]?.steps.map((step) => (
                   <StyledInstructionsItem>{step.step}</StyledInstructionsItem>
                 ))
               : ''}
           </StyledInstructionsList>
-        </Flex>
+        )}
       </StyledRecipeInformation>
     </StyledRecipePage>
   );

@@ -1,30 +1,35 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { getRecipesBySearchRequest } from '../../redux/actionCreators/mainPage';
+import { setSearchValue } from '../../redux/actionCreators/search';
 import { StyledSearch } from './Styles';
 
 const Search = () => {
+  const history = useHistory();
+
   const dispatch = useDispatch();
 
-  const [searchValue, setSearchValue] = useState('');
+  const [searchText, setSearchText] = useState('');
 
   const onChangeHandler = (value) => {
-    console.log(value);
-    setSearchValue(value);
+    setSearchText(value);
   };
 
-  const onSubmitHandler = (e, searchValue) => {
+  const onSubmitHandler = (e, searchText) => {
     e.preventDefault();
-    dispatch(getRecipesBySearchRequest(searchValue));
+    dispatch(getRecipesBySearchRequest(searchText));
+    dispatch(setSearchValue(searchText));
+    history.push('/');
   };
 
   return (
-    <form onSubmit={(e) => onSubmitHandler(e, searchValue)}>
+    <form onSubmit={(e) => onSubmitHandler(e, searchText)}>
       <StyledSearch
         type='text'
         placeholder='Search by food name'
         onChange={(e) => onChangeHandler(e.target.value)}
-        value={searchValue}
+        value={searchText}
       />
     </form>
   );
