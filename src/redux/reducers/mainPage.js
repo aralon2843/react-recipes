@@ -4,6 +4,7 @@ const initialState = {
   recipes: [],
   activeCategory: 'main course',
   isLoaded: false,
+  isNextRecipesLoaded: true,
   error: false,
 };
 
@@ -23,7 +24,7 @@ const mainPage = (state = initialState, { type, payload }) => {
     case actions.GET_RECIPES_BY_CATEGORY_SUCCESS:
       return {
         ...state,
-        isLoaded: false,
+        isLoaded: true,
         error: false,
         recipes: payload,
       };
@@ -38,13 +39,13 @@ const mainPage = (state = initialState, { type, payload }) => {
     case actions.GET_NEXT_RECIPES_BY_CATEGORY:
       return {
         ...state,
-        isLoaded: false,
+        isNextRecipesLoaded: false,
       };
 
     case actions.GET_NEXT_RECIPES_BY_CATEGORY_SUCCESS:
       return {
         ...state,
-        isLoaded: false,
+        isNextRecipesLoaded: true,
         error: false,
         recipes: [...state.recipes, ...payload],
       };
@@ -52,7 +53,7 @@ const mainPage = (state = initialState, { type, payload }) => {
     case actions.GET_NEXT_RECIPES_BY_CATEGORY_ERROR:
       return {
         ...state,
-        isLoaded: false,
+        isNextRecipesLoaded: false,
         error: true,
       };
 
@@ -66,7 +67,7 @@ const mainPage = (state = initialState, { type, payload }) => {
     case actions.GET_RECIPES_BY_SEARCH_SUCCESS:
       return {
         ...state,
-        isLoaded: false,
+        isLoaded: true,
         error: false,
         recipes: payload,
       };
@@ -87,7 +88,7 @@ const mainPage = (state = initialState, { type, payload }) => {
     case actions.GET_NEXT_RECIPES_BY_SEARCH_SUCCESS:
       return {
         ...state,
-        isLoaded: false,
+        isLoaded: true,
         error: false,
         recipes: [...state.recipes, ...payload],
       };

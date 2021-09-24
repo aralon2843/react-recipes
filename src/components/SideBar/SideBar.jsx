@@ -1,11 +1,10 @@
 import { StyledItem, StyledList, StyledLogo, StyledSideBar } from './Styles';
-import mainCourseIcon from '../../assets/logo/main-course.png';
-import soupIcon from '../../assets/logo/soup.png';
-import saladIcon from '../../assets/logo/broccoli.png';
-import dessertIcon from '../../assets/logo/dessert.png';
-import drinkIcon from '../../assets/logo/drink.png';
-import favoritesIcon from '../../assets/logo/star.svg';
-import logo from '../../assets/logo/logo.svg';
+import mainCourseIcon from '../../assets/img/main-course.png';
+import soupIcon from '../../assets/img/soup.png';
+import saladIcon from '../../assets/img/broccoli.png';
+import dessertIcon from '../../assets/img/dessert.png';
+import drinkIcon from '../../assets/img/drink.png';
+import logo from '../../assets/img/logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveCategory } from '../../redux/actionCreators/mainPage';
 import { Link } from 'react-router-dom';
@@ -37,7 +36,6 @@ const SideBar = () => {
             <Link to='/'>{category + 's'}</Link>
           </StyledItem>
         ))}
-        <StyledItem icon={favoritesIcon}>Favorites</StyledItem>
       </StyledList>
     </StyledSideBar>
   );

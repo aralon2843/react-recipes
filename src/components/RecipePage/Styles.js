@@ -43,7 +43,7 @@ export const StyledIngredientsItem = styled.li`
   margin-bottom: 10px;
   font-weight: 400;
   font-size: 16px;
-  background: url(${({ icon }) => icon}) 98%/cover no-repeat;
+  background: url(${({ icon }) => icon}) 98% / cover no-repeat;
   background-size: 32px;
   list-style: none;
   width: 100%;
@@ -64,4 +64,9 @@ export const StyledInstructionsItem = styled.li`
   background-color: #f1f8fe;
   border-radius: 15px;
   padding: 7px;
+`;
+
+export const LoaderWrapper = styled.div`
+  margin: 50px 0px;
+  text-align: center;
 `;

@@ -17,7 +17,7 @@ const recipePage = (state = initialState, { type, payload }) => {
     case actions.GET_RECIPE_INFORMATION_BY_ID_SUCCESS:
       return {
         ...state,
-        isLoaded: false,
+        isLoaded: true,
         error: false,
         recipeInformation: payload,
       }

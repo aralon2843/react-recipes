@@ -34,14 +34,6 @@ export const StyledImage = styled.img`
   margin-bottom: 10px;
 `;
 
-export const StyledTitle = styled.h2`
-  font-size: 18px;
-  font-weight: 400;
-  text-align: center;
-  flex: 1 1 auto;
-  padding: 0 5px;
-`;
-
 export const StyledTag = styled.div`
   display: inline-block;
   color: #3c493f;

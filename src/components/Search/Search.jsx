@@ -15,17 +15,20 @@ const Search = () => {
   const dispatch = useDispatch();
 
   const searchSuggestions = useSelector((state) => state.search.autocomplete);
+
   const [isSuggestsVisible, setSuggestsVisible] = useState(false);
   const [searchText, setSearchText] = useState('');
+
+  const formRef = useRef();
 
   const onChangeHandler = (value) => {
     setSearchText(value);
     if (value === '') {
       dispatch(getSearchAutocompleteRequest(''));
-      setSuggestsVisible(false);
+      hideSuggests();
     } else {
       dispatch(getSearchAutocompleteRequest(searchText));
-      setSuggestsVisible(true);
+      showSuggests();
     }
   };
 
@@ -34,17 +37,22 @@ const Search = () => {
     dispatch(getRecipesBySearchRequest(searchText));
     dispatch(setSearchValue(searchText));
     history.push('/');
-    setSuggestsVisible(false);
+    hideSuggests();
     dispatch(getSearchAutocompleteRequest(''));
   };
 
-  const formRef = useRef();
+  const hideSuggests = () => {
+    console.log('HIDE');
+    setSuggestsVisible(false);
+  };
+
+  const showSuggests = () => {
+    setSuggestsVisible(true);
+  };
 
   useEffect(() => {
     document.body.addEventListener('click', (e) => {
-      e.path.includes(formRef.current)
-        ? setSuggestsVisible(true)
-        : setSuggestsVisible(false);
+      e.path.includes(formRef.current) ? showSuggests() : hideSuggests();
     });
   });
 
@@ -57,11 +65,10 @@ const Search = () => {
           onChange={(e) => onChangeHandler(e.target.value)}
           value={searchText}
         />
-        {searchSuggestions.length > 0 && (
+        {searchSuggestions.length > 0 && isSuggestsVisible && (
           <SearchSuggestions
             searchSuggestions={searchSuggestions}
-            isVisible={isSuggestsVisible}
-            hideSuggests={() => setSuggestsVisible(false)}
+            hideSuggests={hideSuggests}
           />
         )}
       </StyledSearchWrapper>

@@ -1,5 +1,4 @@
-import { memo } from 'react';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -7,6 +6,8 @@ import {
   getNextRecipesBySearchRequest,
   getRecipesByCategoryRequest,
 } from '../../redux/actionCreators/mainPage';
+import RecipeLoader from '../Loaders/RecipeLoader';
+import buttonLoader from '../../assets/loader.png';
 import {
   MoreButtonWrapper,
   StyledButton,
@@ -16,9 +17,9 @@ import {
   StyledRecipe,
   StyledRecipes,
   StyledTime,
-  StyledTitle,
   MoreButton,
 } from './Styles';
+import { Title } from '../../common/Title';
 
 const Recipes = memo(() => {
   const dispatch = useDispatch();
@@ -29,9 +30,13 @@ const Recipes = memo(() => {
 
   const searchValue = useSelector((state) => state.search.searchValue);
 
+  const isLoaded = useSelector((state) => state.mainPage.isLoaded);
+
+  const isNextRecipesLoaded = useSelector(
+    (state) => state.mainPage.isNextRecipesLoaded
+  );
+
   let offset = recipes.length;
-  // сделать пагинацию для рецептов с поиска, useSelector(state => state.search.searchValue)
-  // searchValue прокинуть в getNextRecipesBySearchRequest({searchValue, offset})
 
   useEffect(() => {
     activeCategory && dispatch(getRecipesByCategoryRequest(activeCategory));
@@ -44,32 +49,40 @@ const Recipes = memo(() => {
       dispatch(getNextRecipesBySearchRequest({ searchValue, offset }));
     }
   };
-  return recipes.length > 0 ? (
-    <StyledRecipes>
-      {recipes.map((recipe) => (
-        <StyledRecipe id={recipe.id} key={recipe.id}>
-          <StyledImage src={recipe.image}></StyledImage>
-          <StyledTitle>{recipe.title}</StyledTitle>
-          <StyledTags>
-            {recipe.diets.map((diet) => (
-              <StyledTag>{diet}</StyledTag>
-            ))}
-          </StyledTags>
-          <StyledTime>{recipe.readyInMinutes} min</StyledTime>
+  return isLoaded ? (
+    recipes.length > 0 ? (
+      <StyledRecipes>
+        {recipes.map((recipe) => (
+          <StyledRecipe id={recipe.id} key={recipe.id}>
+            <StyledImage src={recipe.image}></StyledImage>
+            <Title>{recipe.title}</Title>
+            <StyledTags>
+              {recipe.diets.map((diet) => (
+                <StyledTag>{diet}</StyledTag>
+              ))}
+            </StyledTags>
+            <StyledTime>{recipe.readyInMinutes} min</StyledTime>
 
-          <StyledButton>
-            <Link to={`/recipe${recipe.id}`}>Read recipe</Link>
-          </StyledButton>
-        </StyledRecipe>
-      ))}
-      <MoreButtonWrapper>
-        <MoreButton onClick={() => onClickHandler(activeCategory, offset)}>
-          +
-        </MoreButton>
-      </MoreButtonWrapper>
-    </StyledRecipes>
+            <StyledButton>
+              <Link to={`/recipe${recipe.id}`}>Read recipe</Link>
+            </StyledButton>
+          </StyledRecipe>
+        ))}
+        <MoreButtonWrapper>
+          {isNextRecipesLoaded ? (
+            <MoreButton onClick={() => onClickHandler(activeCategory, offset)}>
+              +
+            </MoreButton>
+          ) : (
+            <img src={buttonLoader} alt='loading...' />
+          )}
+        </MoreButtonWrapper>
+      </StyledRecipes>
+    ) : (
+      <Title>Sorry, no results</Title>
+    )
   ) : (
-    <StyledTitle>Sorry, no results</StyledTitle>
+    <StyledRecipes>{Array(11).fill(<RecipeLoader />)}</StyledRecipes>
   );
 });
 
