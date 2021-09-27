@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const StyledMainPage = styled.div`
   flex: 1 1 80%;
@@ -10,4 +10,11 @@ export const StyledMainPage = styled.div`
   margin-bottom: 25px;
   margin-top: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-`
+  @media (max-width: 768px) {
+    margin-top: 60px;
+    border-radius: 0px;
+    form {
+      display: none;
+    }
+  }
+`;

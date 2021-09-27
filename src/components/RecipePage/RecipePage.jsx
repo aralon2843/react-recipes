@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import Flex from '../../common/Flex';
 import { getRecipeInformationByIdRequest } from '../../redux/actionCreators/recipePage';
-import RecipeImageLoader from '../Loaders/RecipeImageLoader/RecipeImageLoader';
+import RecipeImageLoader from '../Loaders/RecipeImageLoader';
 import loader from '../../assets/loader.png';
 import { StyledButton, StyledTag, StyledTags } from '../Recipes/Styles';
 import Search from '../Search/Search';
@@ -37,6 +37,9 @@ const RecipePage = () => {
 
   useEffect(() => {
     dispatch(getRecipeInformationByIdRequest(match.params.id));
+    window.scrollTo({
+      top: 0,
+    });
   }, [match, dispatch]);
 
   return (
@@ -88,9 +91,6 @@ const RecipePage = () => {
         {isLoaded ? (
           activeTab === tabs[0] ? (
             <StyledIngredientsList>
-              <StyledTitle fontSize={18} fontWeight={500}>
-                Ingredients
-              </StyledTitle>
               {recipe?.extendedIngredients?.map((ingredient) => (
                 <StyledIngredientsItem
                   icon={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}>
@@ -100,9 +100,6 @@ const RecipePage = () => {
             </StyledIngredientsList>
           ) : (
             <StyledInstructionsList>
-              <StyledTitle fontSize={18} fontWeight={500}>
-                Instructions
-              </StyledTitle>
               {recipe?.analyzedInstructions.length > 0 ? (
                 recipe?.analyzedInstructions[0]?.steps.map((step) => (
                   <StyledInstructionsItem>{step.step}</StyledInstructionsItem>

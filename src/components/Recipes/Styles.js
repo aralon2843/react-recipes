@@ -11,6 +11,10 @@ export const StyledRecipes = styled.div`
   }
   @media (max-width: 900px) {
     grid-template-columns: 1fr 1fr;
+    grid-gap: 3vw;
+  }
+  @media (max-width: 480px) {
+    display: block;
   }
 `;
 
@@ -24,6 +28,10 @@ export const StyledRecipe = styled.div`
   position: relative;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   overflow: hidden;
+  @media (max-width: 480px) {
+    max-width: 300px;
+    margin: 20px auto;
+  }
 `;
 
 export const StyledImage = styled.img`
@@ -73,6 +81,12 @@ export const StyledButton = styled.button`
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 500;
+  &:last-child {
+    margin-right: 0px;
+  }
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const StyledTime = styled.p`

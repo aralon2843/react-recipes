@@ -1,9 +1,9 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
-import { RecipeLoaderWrapper } from './Styles';
+import { LoaderWrapper } from './Styles';
 
 const RecipeImageLoader = (props) => (
-  <RecipeLoaderWrapper>
+  <LoaderWrapper>
     <ContentLoader
       speed={2}
       width={605}
@@ -17,7 +17,7 @@ const RecipeImageLoader = (props) => (
       <rect x='160' y='342' rx='10' ry='15' width='270' height='20' />
       <rect x='205' y='370' rx='10' ry='15' width='190' height='20' />
     </ContentLoader>
-  </RecipeLoaderWrapper>
+  </LoaderWrapper>
 );
 
 export default RecipeImageLoader;

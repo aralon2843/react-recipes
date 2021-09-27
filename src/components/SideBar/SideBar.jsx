@@ -1,4 +1,11 @@
-import { StyledItem, StyledList, StyledLogo, StyledSideBar } from './Styles';
+import {
+  Burger,
+  Navigation,
+  StyledItem,
+  StyledList,
+  StyledLogo,
+  StyledSideBar,
+} from './Styles';
 import mainCourseIcon from '../../assets/img/main-course.png';
 import soupIcon from '../../assets/img/soup.png';
 import saladIcon from '../../assets/img/broccoli.png';
@@ -8,6 +15,8 @@ import logo from '../../assets/img/logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveCategory } from '../../redux/actionCreators/mainPage';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import Search from '../Search/Search';
 
 const SideBar = () => {
   const categories = ['Main course', 'Soup', 'Salad', 'Dessert', 'Drink'];
@@ -21,22 +30,43 @@ const SideBar = () => {
 
   const activeCategory = useSelector((state) => state.mainPage.activeCategory);
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    if (menuOpen) {
+      setMenuOpen(false);
+      document.querySelector('body').style.overflow = 'auto';
+    } else {
+      setMenuOpen(true);
+      document.querySelector('body').style.overflow = 'hidden';
+    }
+  };
+
   return (
     <StyledSideBar>
-      <Link to='/'>
-        <StyledLogo src={logo} />
-      </Link>
-      <StyledList>
-        {categories.map((category, i) => (
-          <StyledItem
-            active={activeCategory === category.toLowerCase()}
-            icon={icons[i]}
-            onClick={() => onCategoryClick(category.toLowerCase())}
-            key={category}>
-            <Link to='/'>{category + 's'}</Link>
-          </StyledItem>
-        ))}
-      </StyledList>
+      <Navigation>
+        <Link to='/'>
+          <StyledLogo src={logo} />
+        </Link>
+        <Search />
+        <StyledList isOpen={menuOpen}>
+          {categories.map((category, i) => (
+            <StyledItem
+              active={activeCategory === category.toLowerCase()}
+              icon={icons[i]}
+              onClick={() => {
+                onCategoryClick(category.toLowerCase());
+                menuOpen && toggleMenu();
+              }}
+              key={category}>
+              <Link to='/'>{category + 's'}</Link>
+            </StyledItem>
+          ))}
+        </StyledList>
+        <Burger onClick={toggleMenu} isOpen={menuOpen}>
+          <span />
+        </Burger>
+      </Navigation>
     </StyledSideBar>
   );
 };
