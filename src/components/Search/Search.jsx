@@ -42,7 +42,6 @@ const Search = () => {
   };
 
   const hideSuggests = () => {
-    console.log('HIDE');
     setSuggestsVisible(false);
   };
 
@@ -52,7 +51,9 @@ const Search = () => {
 
   useEffect(() => {
     document.body.addEventListener('click', (e) => {
-      e.path.includes(formRef.current) ? showSuggests() : hideSuggests();
+      e.path.includes(formRef.current) && !isSuggestsVisible
+        ? showSuggests()
+        : hideSuggests();
     });
   });
 

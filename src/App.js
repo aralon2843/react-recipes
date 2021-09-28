@@ -1,6 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
 import { Container, Wrapper } from './appStyles';
-import Flex from './common/Flex';
 import MainPage from './components/MainPage/MainPage';
 import RecipePage from './components/RecipePage/RecipePage';
 import SideBar from './components/SideBar/SideBar';

@@ -6,7 +6,7 @@ import {
   getNextRecipesBySearchRequest,
   getRecipesByCategoryRequest,
 } from '../../redux/actionCreators/mainPage';
-import RecipeLoader from '../Loaders/RecipeLoader';
+import RecipeLoader from '../../common/Loaders/RecipeLoader';
 import buttonLoader from '../../assets/loader.png';
 import {
   MoreButtonWrapper,
@@ -40,6 +40,9 @@ const Recipes = memo(() => {
 
   useEffect(() => {
     activeCategory && dispatch(getRecipesByCategoryRequest(activeCategory));
+    window.scrollTo({
+      top: 0,
+    });
   }, [activeCategory, dispatch]);
 
   const onClickHandler = (category, offset) => {

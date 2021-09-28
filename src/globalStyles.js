@@ -6,6 +6,7 @@ const globalStyles = createGlobalStyle`
   * {
     padding: 0;
     margin: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   *, *::before, *::after {
     box-sizing: border-box;

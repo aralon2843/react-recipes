@@ -19,7 +19,6 @@ function* doGetSearchAuotocomplete(action) {
 
   try {
     const response = yield call(fetchSearchAutocomplete, payload);
-    console.log(response);
     yield put(getSearchAutocompleteSuccess(response));
   } catch {
     yield put(getSearchAutocompleteError());

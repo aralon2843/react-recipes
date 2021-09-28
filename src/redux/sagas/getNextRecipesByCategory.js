@@ -22,7 +22,6 @@ function* doGetNextRecipesByCategory(action) {
 
   try {
     const response = yield call(fetchNextRecipesByCategory, payload)
-    console.log(response)
     yield put(getNextRecipesByCategorySuccess(response))
   } catch {
     yield put(getNextRecipesByCategoryError())

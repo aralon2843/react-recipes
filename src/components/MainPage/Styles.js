@@ -11,7 +11,7 @@ export const StyledMainPage = styled.div`
   margin-top: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   @media (max-width: 768px) {
-    margin-top: 60px;
+    margin-top: 45px;
     border-radius: 0px;
     form {
       display: none;

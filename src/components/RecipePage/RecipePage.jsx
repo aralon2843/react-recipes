@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import Flex from '../../common/Flex';
 import { getRecipeInformationByIdRequest } from '../../redux/actionCreators/recipePage';
-import RecipeImageLoader from '../Loaders/RecipeImageLoader';
+import RecipeImageLoader from '../../common/Loaders/RecipeImageLoader';
 import loader from '../../assets/loader.png';
 import { StyledButton, StyledTag, StyledTags } from '../Recipes/Styles';
 import Search from '../Search/Search';
