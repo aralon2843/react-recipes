@@ -61,7 +61,7 @@ const Recipes = memo(() => {
             <Title>{recipe.title}</Title>
             <StyledTags>
               {recipe.diets.map((diet) => (
-                <StyledTag>{diet}</StyledTag>
+                <StyledTag key={diet}>{diet}</StyledTag>
               ))}
             </StyledTags>
             <StyledTime>{recipe.readyInMinutes} min</StyledTime>

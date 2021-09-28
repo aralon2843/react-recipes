@@ -50,11 +50,15 @@ const Search = () => {
   };
 
   useEffect(() => {
-    document.body.addEventListener('click', (e) => {
+    const listener = (e) => {
       e.path.includes(formRef.current) && !isSuggestsVisible
         ? showSuggests()
         : hideSuggests();
-    });
+    };
+    document.body.addEventListener('click', listener);
+    return () => {
+      document.body.removeEventListener('click', listener);
+    };
   });
 
   return (

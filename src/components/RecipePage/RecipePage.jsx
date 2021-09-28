@@ -60,7 +60,7 @@ const RecipePage = () => {
                   <div>
                     Diets:
                     {recipe.diets.map((diet) => (
-                      <StyledTag>{diet}</StyledTag>
+                      <StyledTag key={diet}>{diet}</StyledTag>
                     ))}
                   </div>
                 )}
@@ -68,7 +68,7 @@ const RecipePage = () => {
                   <div>
                     Dish types:
                     {recipe.dishTypes.map((type) => (
-                      <StyledTag>{type}</StyledTag>
+                      <StyledTag key={type}>{type}</StyledTag>
                     ))}
                   </div>
                 )}
@@ -83,7 +83,8 @@ const RecipePage = () => {
             <StyledButton
               onClick={() => setActiveTab(tab)}
               active={activeTab === tab}
-              marginRight={15}>
+              marginRight={15}
+              key={tab}>
               {tab}
             </StyledButton>
           ))}
@@ -93,7 +94,8 @@ const RecipePage = () => {
             <StyledIngredientsList>
               {recipe?.extendedIngredients?.map((ingredient) => (
                 <StyledIngredientsItem
-                  icon={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}>
+                  icon={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
+                  key={ingredient.id}>
                   {ingredient.original}
                 </StyledIngredientsItem>
               ))}
@@ -102,7 +104,9 @@ const RecipePage = () => {
             <StyledInstructionsList>
               {recipe?.analyzedInstructions.length > 0 ? (
                 recipe?.analyzedInstructions[0]?.steps.map((step) => (
-                  <StyledInstructionsItem>{step.step}</StyledInstructionsItem>
+                  <StyledInstructionsItem key={step.number}>
+                    {step.step}
+                  </StyledInstructionsItem>
                 ))
               ) : (
                 <Title>No instructions</Title>
