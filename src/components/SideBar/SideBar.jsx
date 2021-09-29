@@ -45,7 +45,7 @@ const SideBar = () => {
   return (
     <StyledSideBar>
       <Navigation>
-        <Link to='/'>
+        <Link to='/react-recipes'>
           <StyledLogo src={logo} />
         </Link>
         <Search />
