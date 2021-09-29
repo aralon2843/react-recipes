@@ -13,7 +13,7 @@ function App() {
           <Route exact path='/react-recipes'>
             <MainPage />
           </Route>
-          <Route path='/recipe:id'>
+          <Route path='/react-recipes/recipe:id'>
             <RecipePage />
           </Route>
         </Switch>

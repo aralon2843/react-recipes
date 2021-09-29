@@ -12,7 +12,7 @@ const SearchSuggestions = ({ searchSuggestions, hideSuggests }) => {
       {isLoaded ? (
         searchSuggestions.map((suggestion) => (
           <StyledSearchSuggestion onClick={hideSuggests} key={suggestion.id}>
-            <Link to={`/recipe${suggestion.id}`}>{suggestion.title}</Link>
+            <Link to={`/react-recipes/recipe${suggestion.id}`}>{suggestion.title}</Link>
           </StyledSearchSuggestion>
         ))
       ) : (
