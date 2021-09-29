@@ -36,7 +36,7 @@ const Search = () => {
     e.preventDefault();
     dispatch(getRecipesBySearchRequest(searchText));
     dispatch(setSearchValue(searchText));
-    history.push('/');
+    history.push('/react-recipes');
     hideSuggests();
     dispatch(getSearchAutocompleteRequest(''));
   };
