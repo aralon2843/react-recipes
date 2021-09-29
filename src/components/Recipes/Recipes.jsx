@@ -67,7 +67,7 @@ const Recipes = memo(() => {
             <StyledTime>{recipe.readyInMinutes} min</StyledTime>
 
             <StyledButton>
-              <Link to={`/recipe${recipe.id}`}>Read recipe</Link>
+              <Link to={`/react-recipes/recipe${recipe.id}`}>Read recipe</Link>
             </StyledButton>
           </StyledRecipe>
         ))}
