@@ -10,7 +10,7 @@ function App() {
       <Container>
         <SideBar />
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/react-recipes'>
             <MainPage />
           </Route>
           <Route path='/recipe:id'>
